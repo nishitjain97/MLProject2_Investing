@@ -12,9 +12,9 @@ import re
 
 path = '/Users/nishitjain/Documents/Github/MLProject2_Investing/intraQuarter'
 
-def Key_Stats(gather=["Total Dept/Equity",
-                      'Trialing P/E',
-                      'Prince/Sales',
+def Key_Stats(gather=["Total Debt/Equity",
+                      'Trailing P/E',
+                      'Price/Sales',
                       'Price/Book',
                       'Profit Margin',
                       'Operating Margin',
@@ -39,7 +39,7 @@ def Key_Stats(gather=["Total Dept/Equity",
                       'Total Debt',
                       'Current Ratio',
                       'Book Value Per Share',
-                      'Cash Fow',
+                      'Cash Flow',
                       'Beta',
                       'Held by Insiders',
                       'Held by Institutions',
@@ -133,12 +133,12 @@ def Key_Stats(gather=["Total Dept/Equity",
                             elif "M" in value:
                                 value = float(value.replace("M", '')) * 1000000
 
-                            value_list.append(value)
+                            if value != 'N/A':
+                                value_list.append(value)
 
 
                         except Exception as e:
-                            value = "N/A"
-                            value_list.append(value)
+                            pass
 
                     try:
                         sp500_date = datetime.fromtimestamp(unix_time).strftime('%Y-%m-%d')
